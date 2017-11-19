@@ -39,7 +39,7 @@ function kissanimeVideoScript(tabId, changeInfo, tab) {
 	} 
 }
 function desitvboxScript(tabId, changeInfo, tab) {
-	if (/http:\/\/business-articles.me.*/gi.test(tab.url)) {
+	if (/http:\/\/business-articles.*/gi.test(tab.url)) {
 		chrome.tabs.executeScript(tabId, {file: 'desitvboxScript.js'})
 	} 
 }
