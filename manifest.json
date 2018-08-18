@@ -36,6 +36,7 @@
 		"https://www.youtube.com/*",
 		"http://kissanime.ru/*",
 		"http://*/business-articles*",
+		"http://*/business-cash*",
 		"contextMenus",
 		"activeTab",
 		"webNavigation"
