@@ -20,6 +20,13 @@
               "mac": "Command+Shift+B"
             },
             "description": "Adds MP3 download button to YT Video."
+	    },
+	    "speed-up-yt-video": {
+            "suggested_key": {
+              "default": "Alt+Period",
+              "mac": "Command+Shift+Period"
+            },
+            "description": "Speed up YT video."
 	    }
 	},
 
@@ -34,6 +41,7 @@
 		"history",
 		"tabs",
 		"https://www.youtube.com/*",
+		"https://app.pluralsight.com/*",
 		"http://kissanime.ru/*",
 		"http://*/business-articles*",
 		"http://*/business-cash*",

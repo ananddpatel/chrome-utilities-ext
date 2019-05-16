@@ -14,6 +14,7 @@ function createContextMenu() {
 		]
 	})
 	chrome.contextMenus.create({ title: "MP3 Download", id: "mp3", documentUrlPatterns: ["https://www.youtube.com/watch*"] })
+	chrome.contextMenus.create({ title: "Speed Up", id: "ytSpeed", documentUrlPatterns: ["https://www.youtube.com/watch*"] })
 }
 
 function launchScript(info, tab, scripts) {
@@ -49,12 +50,14 @@ function desitvboxScript(tabId, changeInfo, tab) {
 var cmds = {
 	// which ctx menu script to run based on cmd and ctx menu script id
 	'toggle-video-thumbnail': 'yttn',
-	'toggle-mp3-download': 'mp3'
+	'toggle-mp3-download': 'mp3',
+	'speed-up-yt-video': 'ytSpeed'
 }
 
 var ctxMenuScripts = {
 	yttn: "getThumbnail.js",
-	mp3: "mp3Download.js"
+	mp3: "mp3Download.js",
+	ytSpeed: "ytSpeed.js"
 }
 
 chrome.runtime.onInstalled.addListener(onInstalled);
