@@ -1,53 +1,53 @@
 {
-	"manifest_version": 2,
+  "manifest_version": 2,
 
-	"name": "YT thumbnail",
-	"description": "opens youtube thumbnail",
-	"version": "1.1",
-	"incognito": "split",
+  "name": "YT thumbnail",
+  "description": "opens youtube thumbnail",
+  "version": "1.1",
+  "incognito": "split",
 
-	"commands": {
-		"toggle-video-thumbnail": {
-            "suggested_key": {
-              "default": "Ctrl+Shift+Y",
-              "mac": "Command+Shift+Y"
-            },
-            "description": "Opens YT video thumbnail in a new tab."
-	    },
-	    "toggle-mp3-download": {
-            "suggested_key": {
-              "default": "Ctrl+Shift+B",
-              "mac": "Command+Shift+B"
-            },
-            "description": "Adds MP3 download button to YT Video."
-	    },
-	    "speed-up-yt-video": {
-            "suggested_key": {
-              "default": "Alt+Period",
-              "mac": "Command+Shift+Period"
-            },
-            "description": "Speed up YT video."
-	    }
-	},
+  "commands": {
+    "toggle-video-thumbnail": {
+      "suggested_key": {
+        "default": "Ctrl+Shift+Y",
+        "mac": "Command+Shift+Y"
+      },
+      "description": "Opens YT video thumbnail in a new tab."
+    },
+    "toggle-mp3-download": {
+      "suggested_key": {
+        "default": "Ctrl+Shift+B",
+        "mac": "Command+Shift+B"
+      },
+      "description": "Adds MP3 download button to YT Video."
+    },
+    "speed-up-yt-video": {
+      "suggested_key": {
+        "default": "Alt+Period",
+        "mac": "Command+Shift+Period"
+      },
+      "description": "Speed up YT video."
+    }
+  },
 
-	"background": {
-		"scripts": ["background.js"],
-		"persistent": false
-	},
-	"icons": {
-		"16": "icon.png"
-	},
-	"permissions": [
-		"history",
-		"tabs",
-		"https://www.youtube.com/*",
-		"https://www.autotrader.ca/*",
-		"https://app.pluralsight.com/*",
-		"http://kissanime.ru/*",
-		"http://*/business-articles*",
-		"http://*/business-cash*",
-		"contextMenus",
-		"activeTab",
-		"webNavigation"
-	]
+  "background": {
+    "scripts": ["background.js"],
+    "persistent": false
+  },
+  "icons": {
+    "16": "icon.png"
+  },
+  "permissions": [
+    "history",
+    "tabs",
+    "https://www.youtube.com/*",
+    "https://*.autotrader.ca/*",
+    "https://app.pluralsight.com/*",
+    "http://kissanime.ru/*",
+    "http://*/business-articles*",
+    "http://*/business-cash*",
+    "contextMenus",
+    "activeTab",
+    "webNavigation"
+  ]
 }

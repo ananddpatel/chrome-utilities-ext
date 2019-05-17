@@ -1,12 +1,15 @@
-
-Array.from(document.querySelectorAll('.result-item')).forEach((item, i) => {
-  const pctChange = (final, initial, fix = false) => {
-    const change = ((final-initial)/initial)*100
-    if (fix) {
-      return change.toFixed(2)
-    }
-    return change;
+const pctChange = (final, initial, fix = false) => {
+  const change = ((final - initial) / initial) * 100;
+  if (fix) {
+    return change.toFixed(2);
   }
+  return change;
+};
+
+Array.from(document.querySelectorAll('.customAnalyticsContainer')).forEach(el => el.remove());
+
+// add new anaylitcs containers
+Array.from(document.querySelectorAll('.result-item')).forEach((item, i) => {
   const currYear = new Date().getFullYear();
   try {
     const year = parseInt(
@@ -16,42 +19,35 @@ Array.from(document.querySelectorAll('.result-item')).forEach((item, i) => {
         .split(' ')[0]
     );
 
-    // const kms = item.querySelector('.kms').innerText.trim();
     const kmsEl = item.querySelector('.kms');
-    const kms = parseInt(kmsEl.innerText.trim().replace(/\D*/g, ''));
+    const kmsDriven = parseInt(kmsEl.innerText.trim().replace(/\D*/g, ''));
 
     const yearsDriven = currYear - year;
 
     if (!isNaN(yearsDriven)) {
-      const expected = yearsDriven * 23000;
-      // console.log(year, `actual: ${kms}   expected: ${expected}`);
-
-      const fixedDiffKms = pctChange(kms, expected, true)
-      const diffKms = pctChange(kms, expected)
-      const color = diffKms < 0 ? 'green' : 'red';
-
-      console.log(year, kms, fixedDiffKms, diffKms);
-      
+      const expectedKmsDriven = yearsDriven * 20000;
+      const diffKmsDecimal = pctChange(kmsDriven, expectedKmsDriven, true);
+      const diffKmsPercent = pctChange(kmsDriven, expectedKmsDriven);
+      const color = diffKmsPercent < 0 ? 'green' : 'red';
 
       let analyticsContainer = document.createElement('div');
+      analyticsContainer.className = 'customAnalyticsContainer';
       analyticsContainer.id = 'customAnalyticsContainer' + i;
 
-      const existingAnalyticsContainer = document.getElementById('customAnalyticsContainer'+ i);
+      const existingAnalyticsContainer = document.getElementById('customAnalyticsContainer' + i);
       if (existingAnalyticsContainer) {
-        analyticsContainer = existingAnalyticsContainer
-        
+        analyticsContainer = existingAnalyticsContainer;
       }
 
       analyticsContainer.innerHTML = `
         <div class="c-container" style="padding: 5px; color: white; background: ${color}">
-          <strong class="c-expected">Expected</strong>: ${expected} kms
+          <strong class="c-expected">Expected</strong>: ${expectedKmsDriven} kms
           <br>
-          <strong class="c-pct-diff">Percent Diff</strong>: ${fixedDiffKms}%
+          <strong class="c-pct-diff">Percent Diff</strong>: ${diffKmsDecimal}%
         </div>
         `;
       kmsEl.appendChild(analyticsContainer);
     }
-    // console.log(kms);
   } catch (e) {
     console.log(item, e);
   }
