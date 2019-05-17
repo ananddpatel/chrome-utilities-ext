@@ -44,6 +44,12 @@ function desitvboxScript(tabId, changeInfo, tab) {
 		chrome.tabs.executeScript(tabId, {file: 'desitvboxScript.js'})
 	} 
 }
+function autoTraderScript(tabId, changeInfo, tab) {
+	if (/autotrader.ca\/cars\/.*/gi.test(tab.url) && changeInfo.status === 'complete') {
+		console.log(tabId, changeInfo, tab)
+		chrome.tabs.executeScript(tabId, {file: 'autotrader.js'})
+	}
+}
 
 /*================= SetUP =======================*/
 // menu scripts that run on the event page
@@ -66,3 +72,4 @@ chrome.commands.onCommand.addListener(cmdActivateHandler)
 
 chrome.tabs.onUpdated.addListener(kissanimeVideoScript)
 chrome.tabs.onUpdated.addListener(desitvboxScript)
+chrome.tabs.onUpdated.addListener(autoTraderScript)

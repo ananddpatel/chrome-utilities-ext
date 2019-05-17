@@ -1,18 +1,13 @@
-var pctChange = (final, initial, fix = false) => {
-  const change = ((final-initial)/initial)*100
-  if (fix) {
-    return change.toFixed(2)
+
+Array.from(document.querySelectorAll('.result-item')).forEach((item, i) => {
+  const pctChange = (final, initial, fix = false) => {
+    const change = ((final-initial)/initial)*100
+    if (fix) {
+      return change.toFixed(2)
+    }
+    return change;
   }
-  return change;
-}
-var getColor = value => {
-  const parsedValue = parseFloat(value)
-  //value from 0 to 1
-  var hue=((1-parsedValue)*120).toString(10);
-  return ["hsl(",hue,",100%,50%)"].join("");
-}
-var currYear = new Date().getFullYear();
-$$('.result-item').forEach(item => {
+  const currYear = new Date().getFullYear();
   try {
     const year = parseInt(
       item
@@ -35,7 +30,18 @@ $$('.result-item').forEach(item => {
       const diffKms = pctChange(kms, expected)
       const color = diffKms < 0 ? 'green' : 'red';
 
-      const analyticsContainer = document.createElement('div');
+      console.log(year, kms, fixedDiffKms, diffKms);
+      
+
+      let analyticsContainer = document.createElement('div');
+      analyticsContainer.id = 'customAnalyticsContainer' + i;
+
+      const existingAnalyticsContainer = document.getElementById('customAnalyticsContainer'+ i);
+      if (existingAnalyticsContainer) {
+        analyticsContainer = existingAnalyticsContainer
+        
+      }
+
       analyticsContainer.innerHTML = `
         <div class="c-container" style="padding: 5px; color: white; background: ${color}">
           <strong class="c-expected">Expected</strong>: ${expected} kms
