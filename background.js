@@ -43,6 +43,7 @@ function desitvboxScript(tabId, changeInfo, tab) {
 function autoTraderScript(tabId, changeInfo, tab) {
   if (/autotrader.ca\/cars\/.*/gi.test(tab.url)) {
     if (changeInfo.status && changeInfo.status === 'complete') {
+      console.log(tabId, changeInfo, tab)
       chrome.tabs.executeScript(tabId, { file: 'autotrader.js' });
     }
   }

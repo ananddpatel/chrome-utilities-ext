@@ -3,38 +3,38 @@ Array.from(document.querySelectorAll('.customAnalyticsContainer')).forEach(el =>
 
 // add new anaylitcs containers
 Array.from(document.querySelectorAll('.result-item')).forEach((item, i) => {
-  const pctChange = (final, initial, fix = false) => {
-    const change = ((final - initial) / initial) * 100;
+  var pctChange = (final, initial, fix = false) => {
+    var change = ((final - initial) / initial) * 100;
     if (fix) {
       return change.toFixed(2);
     }
     return change;
   };
-  const currYear = new Date().getFullYear();
+  var currYear = new Date().getFullYear();
   try {
-    const year = parseInt(
+    var year = parseInt(
       item
         .querySelector('span[itemprop]')
         .innerText.trim()
         .split(' ')[0]
     );
 
-    const kmsEl = item.querySelector('.kms');
-    const kmsDriven = parseInt(kmsEl.innerText.trim().replace(/\D*/g, ''));
+    var kmsEl = item.querySelector('.kms');
+    var kmsDriven = parseInt(kmsEl.innerText.trim().replace(/\D*/g, ''));
 
-    const yearsDriven = currYear - year;
+    var yearsDriven = currYear - year;
 
     if (!isNaN(yearsDriven)) {
-      const expectedKmsDriven = yearsDriven * 20000;
-      const diffKmsDecimal = pctChange(kmsDriven, expectedKmsDriven, true);
-      const diffKmsPercent = pctChange(kmsDriven, expectedKmsDriven);
-      const color = diffKmsPercent < 0 ? 'green' : 'red';
+      var expectedKmsDriven = yearsDriven * 20000;
+      var diffKmsDecimal = pctChange(kmsDriven, expectedKmsDriven, true);
+      var diffKmsPercent = pctChange(kmsDriven, expectedKmsDriven);
+      var color = diffKmsPercent < 0 ? 'green' : 'red';
 
       let analyticsContainer = document.createElement('div');
       analyticsContainer.className = 'customAnalyticsContainer';
       analyticsContainer.id = 'customAnalyticsContainer' + i;
 
-      const existingAnalyticsContainer = document.getElementById('customAnalyticsContainer' + i);
+      var existingAnalyticsContainer = document.getElementById('customAnalyticsContainer' + i);
       if (existingAnalyticsContainer) {
         analyticsContainer = existingAnalyticsContainer;
       }
